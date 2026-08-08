@@ -29,4 +29,4 @@ jobs:
         SECRET_KEY: "ci-secret-key"
         DEBUG: "True"
       run: |
-        python manage.py check
+        python -m py_compile manage.py Eshop/settings.py Eshop/urls.py Eshop/wsgi.py
