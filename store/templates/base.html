@@ -64,6 +64,49 @@
       font-size: 0.8rem;
       cursor: pointer;
     }
+
+    /* Main Navigation Header */
+    .navbar-nexshop {
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+      padding: 0.9rem 1.5rem;
+    }
+
+    .brand-logo-nexshop {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 800;
+      font-size: 1.8rem;
+      color: #ffffff !important;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      text-decoration: none !important;
+    }
+
+    .brand-logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, #10b981, #059669);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.2rem;
+      margin-right: 10px;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.4);
+    }
+
+    .brand-tag {
+      font-size: 0.7rem;
+      background: rgba(99, 102, 241, 0.2);
+      color: #818cf8;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+      margin-left: 6px;
+    }
   </style>
 </head>
 
@@ -84,6 +127,18 @@
       </div>
     </div>
   </div>
+
+  <!-- Main Navigation Header -->
+  <nav class="navbar navbar-expand-lg navbar-dark navbar-nexshop sticky-top">
+    <div class="container-fluid px-lg-5">
+      
+      <a class="brand-logo-nexshop" href="/">
+        <div class="brand-logo-icon"><i class="fa-solid fa-layer-group"></i></div>
+        NexShop <span class="brand-tag" style="background: rgba(16, 185, 129, 0.2); color: #34d399;">BD</span>
+      </a>
+
+    </div>
+  </nav>
 
 </body>
 
