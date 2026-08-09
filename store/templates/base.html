@@ -164,6 +164,106 @@
       padding: 3px 9px;
       box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
     }
+
+    /* Floating WhatsApp Button */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      box-shadow: 0 8px 25px rgba(37, 211, 102, 0.4);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      z-index: 999;
+      cursor: pointer;
+      text-decoration: none !important;
+      transition: all 0.3s ease;
+    }
+
+    .floating-whatsapp:hover {
+      transform: translateY(-4px) scale(1.03);
+      color: white;
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.6);
+    }
+
+    /* WhatsApp Auto-Assistant Modal Box */
+    .chat-box-modal {
+      display: none;
+      position: fixed;
+      bottom: 90px;
+      right: 25px;
+      width: 350px;
+      background: #ffffff;
+      border-radius: 16px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      z-index: 1000;
+      overflow: hidden;
+      border: 1px solid #e2e8f0;
+    }
+
+    .chat-box-header {
+      background: #075e54;
+      color: white;
+      padding: 15px 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .chat-box-body {
+      padding: 15px;
+      max-height: 320px;
+      overflow-y: auto;
+      background: #efeae2;
+    }
+
+    .chat-bubble-bot {
+      background: #ffffff;
+      color: #111b21;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      margin-bottom: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .chat-bubble-user {
+      background: #d9fdd3;
+      color: #111b21;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.88rem;
+      margin-bottom: 10px;
+      margin-left: auto;
+      max-width: 85%;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    }
+
+    .chat-opt-btn {
+      background: #ffffff;
+      border: 1px solid #25d366;
+      color: #075e54;
+      font-weight: 600;
+      font-size: 0.82rem;
+      padding: 6px 12px;
+      border-radius: 20px;
+      margin-right: 5px;
+      margin-bottom: 6px;
+      cursor: pointer;
+      display: inline-block;
+      transition: all 0.2s;
+    }
+
+    .chat-opt-btn:hover {
+      background: #25d366;
+      color: white;
+    }
   </style>
 </head>
 
@@ -242,6 +342,44 @@
   <main>
     {% block content %}{% endblock %}
   </main>
+
+  <!-- Floating Customer Support WhatsApp Button -->
+  <div class="floating-whatsapp" onclick="toggleChatAssistant()">
+    <i class="fa-brands fa-whatsapp fa-xl"></i>
+    <span>WhatsApp Support</span>
+  </div>
+
+  <!-- Interactive WhatsApp Auto-Assistant Live Chat Modal -->
+  <div id="chatAssistantModal" class="chat-box-modal">
+    <div class="chat-box-header">
+      <div class="d-flex align-items-center">
+        <i class="fa-brands fa-whatsapp fa-xl mr-2 text-white"></i>
+        <div>
+          <h6 class="m-0 font-weight-bold text-white">NexShop Live Support Bot</h6>
+          <small class="text-white-50" style="font-size: 0.75rem;">Online 🟢 • Auto-Reply Active</small>
+        </div>
+      </div>
+      <button type="button" class="close text-white" onclick="toggleChatAssistant()">&times;</button>
+    </div>
+
+    <div class="chat-box-body" id="chat_messages">
+      <div class="chat-bubble-bot">
+        👋 <strong>Assalamu Alaikum!</strong> Welcome to NexShop Live Support (<strong>01784299242</strong>). Type a message below or pick an option:
+      </div>
+      <div id="chat_options">
+        <span class="chat-opt-btn" onclick="sendAutoReply('order')">📦 Order Tracking</span>
+        <span class="chat-opt-btn" onclick="sendAutoReply('delivery')">🚚 Delivery Charge</span>
+        <span class="chat-opt-btn" onclick="sendAutoReply('payment')">💳 Payment Methods</span>
+        <span class="chat-opt-btn" onclick="sendAutoReply('whatsapp')">📲 Chat on WhatsApp</span>
+      </div>
+    </div>
+
+    <!-- User Input Field -->
+    <div class="p-2 bg-white border-top d-flex align-items-center">
+      <input type="text" id="chat_user_input" class="form-control form-control-sm mr-2" placeholder="Type your message..." onkeypress="if(event.key==='Enter') sendCustomUserMessage()">
+      <button type="button" class="btn btn-sm btn-success font-weight-bold" onclick="sendCustomUserMessage()"><i class="fa-solid fa-paper-plane"></i></button>
+    </div>
+  </div>
 
 </body>
 
