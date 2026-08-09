@@ -137,6 +137,33 @@
       color: white;
       box-shadow: 0 4px 14px rgba(16, 185, 129, 0.4);
     }
+
+    .nav-link-custom {
+      color: #cbd5e1 !important;
+      font-weight: 500;
+      font-size: 0.95rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.55rem 1rem !important;
+      border-radius: 10px;
+      transition: all 0.2s;
+    }
+
+    .nav-link-custom:hover {
+      color: #ffffff !important;
+      background: rgba(255, 255, 255, 0.1);
+    }
+
+    .cart-badge-nexshop {
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: white;
+      font-weight: 800;
+      font-size: 0.75rem;
+      border-radius: 20px;
+      padding: 3px 9px;
+      box-shadow: 0 2px 8px rgba(16, 185, 129, 0.4);
+    }
   </style>
 </head>
 
@@ -173,8 +200,48 @@
         <button class="btn search-btn-nexshop" type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
       </form>
 
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#nexshopNav" aria-controls="nexshopNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="nexshopNav">
+        <ul class="navbar-nav ml-auto align-items-center">
+          <li class="nav-item">
+            <a class="nav-link-custom" href="/"><i class="fa-solid fa-store"></i> Catalog</a>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link-custom" href="/cart">
+              <i class="fa-solid fa-bag-shopping"></i> Cart
+              <span class="cart-badge-nexshop ml-1">{{request.session.cart.keys|length}}</span>
+            </a>
+          </li>
+
+          {% if request.session.customer %}
+          <li class="nav-item">
+            <a class="nav-link-custom" href="/orders"><i class="fa-solid fa-boxes-packing"></i> My Orders</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-custom text-white" href="/logout" style="background: rgba(239, 68, 68, 0.2); color: #fca5a5 !important;"><i class="fa-solid fa-right-from-bracket"></i> Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a class="nav-link-custom" href="/login"><i class="fa-solid fa-right-to-bracket"></i> Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link-custom" href="/signup" style="background: rgba(16, 185, 129, 0.2); color: #34d399 !important;"><i class="fa-solid fa-user-plus"></i> Register</a>
+          </li>
+          {% endif %}
+        </ul>
+      </div>
+
     </div>
   </nav>
+
+  <!-- Page Content -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
 
 </body>
 
