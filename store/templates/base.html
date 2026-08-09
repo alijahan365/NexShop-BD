@@ -264,6 +264,42 @@
       background: #25d366;
       color: white;
     }
+
+    /* Footer Styling */
+    footer {
+      background-color: #0b1329;
+      color: #94a3b8;
+      font-size: 0.88rem;
+    }
+
+    footer h6 {
+      color: #ffffff;
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+
+    footer a {
+      color: #94a3b8;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    footer a:hover {
+      color: #34d399;
+    }
+
+    .pay-badge-custom {
+      background: rgba(255, 255, 255, 0.06);
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 7px 14px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      display: inline-block;
+      margin-right: 6px;
+      margin-bottom: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
   </style>
 </head>
 
@@ -380,6 +416,66 @@
       <button type="button" class="btn btn-sm btn-success font-weight-bold" onclick="sendCustomUserMessage()"><i class="fa-solid fa-paper-plane"></i></button>
     </div>
   </div>
+
+  <!-- NexShop Footer -->
+  <footer class="pt-5 pb-4 mt-5">
+    <div class="container-fluid px-lg-5">
+      <div class="row">
+        
+        <div class="col-md-3 mb-4">
+          <h6>Customer Support</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="https://api.whatsapp.com/send?phone=8801784299242&text=Assalamu%20Alaikum%20NexShop%20Support!%20I%20need%20help." target="_blank"><i class="fa-brands fa-whatsapp text-success mr-2"></i> WhatsApp: 01784299242</a></li>
+            <li class="mb-2"><a href="tel:01784299242"><i class="fa-solid fa-phone text-primary mr-2"></i> Call Support: 01784299242</a></li>
+            <li class="mb-2"><a href="/orders">Help & Support Center</a></li>
+            <li class="mb-2"><a href="/orders">Return & Refund Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 mb-4">
+          <h6>NexShop Platform</h6>
+          <ul class="list-unstyled">
+            <li class="mb-2"><a href="/">About NexShop</a></li>
+            <li class="mb-2"><a href="/">Privacy Policy</a></li>
+            <li class="mb-2"><a href="/">Terms of Service</a></li>
+            <li class="mb-2"><a href="/admin" target="_blank">Admin Control Panel</a></li>
+          </ul>
+        </div>
+
+        <div class="col-md-3 mb-4">
+          <h6>Accepted Payment Options</h6>
+          <div>
+            <span class="pay-badge-custom text-danger"><i class="fa-solid fa-mobile-screen mr-1"></i> bKash</span>
+            <span class="pay-badge-custom text-warning"><i class="fa-solid fa-bolt mr-1"></i> Nagad</span>
+            <span class="pay-badge-custom text-primary"><i class="fa-solid fa-paper-plane mr-1"></i> Rocket</span>
+            <span class="pay-badge-custom text-info"><i class="fa-regular fa-credit-card mr-1"></i> VISA / IBBL</span>
+            <span class="pay-badge-custom text-success"><i class="fa-solid fa-hand-holding-dollar mr-1"></i> Cash on Delivery</span>
+          </div>
+        </div>
+
+        <div class="col-md-3 mb-4">
+          <h6>Need Assistance?</h6>
+          <div class="p-3 rounded border" style="background: rgba(255,255,255,0.03); border-color: rgba(255,255,255,0.08) !important;">
+            <p class="small text-white font-weight-bold mb-1"><i class="fa-solid fa-headset text-success mr-1"></i> 24/7 Helpline</p>
+            <h5 class="font-weight-bold text-success m-0"><a href="https://api.whatsapp.com/send?phone=8801784299242&text=Assalamu%20Alaikum!" target="_blank" class="text-success text-decoration-none">01784299242</a></h5>
+            <small class="text-muted">Contact us for any order issues or queries</small>
+          </div>
+        </div>
+
+      </div>
+
+      <hr style="border-color: rgba(255, 255, 255, 0.08);" class="my-4">
+
+      <div class="d-flex flex-wrap justify-content-between align-items-center small">
+        <p class="m-0">© 2026 NexShop Platform. All Rights Reserved.</p>
+        <div>
+          <a href="https://api.whatsapp.com/send?phone=8801784299242&text=Assalamu%20Alaikum!" target="_blank" class="mr-3 text-success"><i class="fa-brands fa-whatsapp fa-lg"></i></a>
+          <a href="/" class="mr-3 text-muted"><i class="fa-brands fa-facebook fa-lg"></i></a>
+          <a href="/" class="text-muted"><i class="fa-solid fa-globe fa-lg"></i></a>
+        </div>
+      </div>
+    </div>
+  </footer>
 
 </body>
 
