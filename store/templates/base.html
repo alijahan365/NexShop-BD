@@ -265,6 +265,23 @@
       color: white;
     }
 
+    /* Button Primary */
+    .btn-custom-primary {
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: white;
+      border: none;
+      font-weight: 600;
+      border-radius: 10px;
+      padding: 0.65rem 1.4rem;
+      transition: all 0.25s ease;
+    }
+
+    .btn-custom-primary:hover {
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.35);
+      color: white;
+      transform: translateY(-2px);
+    }
+
     /* Footer Styling */
     footer {
       background-color: #0b1329;
@@ -299,6 +316,66 @@
       margin-right: 6px;
       margin-bottom: 8px;
       border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* Mobile Bottom Navigation Bar */
+    .mobile-bottom-nav {
+      background: #0f172a;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding: 8px 0;
+      box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.25);
+      z-index: 1040;
+    }
+
+    .mobile-nav-item {
+      color: #94a3b8;
+      text-decoration: none !important;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.72rem;
+      font-weight: 600;
+      transition: all 0.2s;
+      flex: 1;
+    }
+
+    .mobile-nav-item i {
+      font-size: 1.15rem;
+      margin-bottom: 2px;
+    }
+
+    .mobile-nav-item:hover, .mobile-nav-item.active {
+      color: #10b981;
+    }
+
+    .mobile-cart-badge {
+      position: absolute;
+      top: -3px;
+      right: 20%;
+      background: #10b981;
+      color: white;
+      font-size: 0.65rem;
+      font-weight: 800;
+      border-radius: 10px;
+      padding: 1px 6px;
+    }
+
+    @media (max-width: 991px) {
+      body {
+        padding-bottom: 65px;
+      }
+      .floating-whatsapp {
+        bottom: 75px !important;
+        right: 15px !important;
+        padding: 10px 16px !important;
+        font-size: 0.85rem !important;
+      }
+      .chat-box-modal {
+        bottom: 130px !important;
+        right: 15px !important;
+        width: 90% !important;
+        max-width: 340px !important;
+      }
     }
   </style>
 </head>
@@ -476,6 +553,104 @@
       </div>
     </div>
   </footer>
+
+  <script>
+  function toggleChatAssistant() {
+    var modal = document.getElementById('chatAssistantModal');
+    if (modal.style.display === 'block') {
+      modal.style.display = 'none';
+    } else {
+      modal.style.display = 'block';
+    }
+  }
+
+  function sendAutoReply(type) {
+    var box = document.getElementById('chat_messages');
+
+    if (type === 'order') {
+      box.innerHTML += '<div class="chat-bubble-user">📦 How to track my order?</div>';
+      setTimeout(function() {
+        box.innerHTML += '<div class="chat-bubble-bot">🤖 <strong>Auto-Reply:</strong> You can track your placed orders in real-time from the <a href="/orders"><strong>My Orders</strong></a> page, or contact our support team at <strong>01784299242</strong>.</div>';
+        box.scrollTop = box.scrollHeight;
+      }, 400);
+    } else if (type === 'delivery') {
+      box.innerHTML += '<div class="chat-bubble-user">🚚 What is the delivery charge?</div>';
+      setTimeout(function() {
+        box.innerHTML += '<div class="chat-bubble-bot">🤖 <strong>Auto-Reply:</strong> Delivery charge is calculated at <strong>৳0.5 per KM</strong> based on your selected BD Map location from our Dhaka warehouse.</div>';
+        box.scrollTop = box.scrollHeight;
+      }, 400);
+    } else if (type === 'payment') {
+      box.innerHTML += '<div class="chat-bubble-user">💳 What payment methods are supported?</div>';
+      setTimeout(function() {
+        box.innerHTML += '<div class="chat-bubble-bot">🤖 <strong>Auto-Reply:</strong> We support Instant Auto Payments via <strong>bKash, Nagad, Rocket, Islami Bank VISA Card</strong>, and <strong>Cash on Delivery</strong>!</div>';
+        box.scrollTop = box.scrollHeight;
+      }, 400);
+    } else if (type === 'whatsapp') {
+      box.innerHTML += '<div class="chat-bubble-user">📲 Launching WhatsApp Messenger...</div>';
+      setTimeout(function() {
+        window.open("https://api.whatsapp.com/send?phone=8801784299242&text=Assalamu%20Alaikum%20NexShop%20Support!%20I%20need%20help%20with%20my%20order.", "_blank");
+      }, 400);
+    }
+  }
+
+  function sendCustomUserMessage() {
+    var input = document.getElementById('chat_user_input');
+    var msg = input.value.trim();
+    if (!msg) return;
+
+    var box = document.getElementById('chat_messages');
+    box.innerHTML += '<div class="chat-bubble-user">' + msg + '</div>';
+    input.value = '';
+    box.scrollTop = box.scrollHeight;
+
+    var msgLower = msg.toLowerCase();
+    var botReply = "";
+
+    if (msgLower.includes('hi') || msgLower.includes('hello') || msgLower.includes('slm') || msgLower.includes('assalamu')) {
+      botReply = "🤖 <strong>Auto-Reply:</strong> Assalamu Alaikum! Thank you for reaching out. How can we assist you with your order today?";
+    } else if (msgLower.includes('order') || msgLower.includes('track') || msgLower.includes('delivery')) {
+      botReply = "🤖 <strong>Auto-Reply:</strong> Orders are processed immediately. You can view your live order status on the <a href='/orders'><strong>My Orders</strong></a> page.";
+    } else if (msgLower.includes('pay') || msgLower.includes('bkash') || msgLower.includes('nagad') || msgLower.includes('money')) {
+      botReply = "🤖 <strong>Auto-Reply:</strong> All bKash, Nagad, Rocket, VISA and COD payments are auto-recorded and verified by Admin.";
+    } else {
+      botReply = "🤖 <strong>Auto-Reply:</strong> Thank you for messaging us! Our automated assistant has forwarded your query to support number <strong>01784299242</strong>.<br><a href='https://api.whatsapp.com/send?phone=8801784299242&text=" + encodeURIComponent("Assalamu Alaikum! " + msg) + "' target='_blank' class='btn btn-sm btn-success font-weight-bold mt-2 d-block'><i class='fa-brands fa-whatsapp mr-1'></i> Open WhatsApp Direct Chat</a>";
+    }
+
+    setTimeout(function() {
+      box.innerHTML += '<div class="chat-bubble-bot">' + botReply + '</div>';
+      box.scrollTop = box.scrollHeight;
+    }, 500);
+  }
+  </script>
+
+  <!-- MOBILE STICKY BOTTOM NAV BAR (APP-STYLE E-COMMERCE BOTTOM NAV) -->
+  <div class="mobile-bottom-nav d-flex d-lg-none justify-content-around align-items-center fixed-bottom">
+    <a href="/" class="mobile-nav-item {% if request.path == '/' and not request.GET.category %}active{% endif %}">
+      <i class="fa-solid fa-house"></i>
+      <span>Home</span>
+    </a>
+    <a href="/#catalog_section" class="mobile-nav-item {% if request.GET.category %}active{% endif %}">
+      <i class="fa-solid fa-layer-group"></i>
+      <span>Categories</span>
+    </a>
+    <a href="/cart" class="mobile-nav-item position-relative {% if request.path == '/cart' %}active{% endif %}">
+      <i class="fa-solid fa-cart-shopping"></i>
+      <span>Cart</span>
+      {% if request.session.cart %}
+      <span class="mobile-cart-badge">{{request.session.cart|length}}</span>
+      {% endif %}
+    </a>
+    <a href="/orders" class="mobile-nav-item {% if request.path == '/orders' %}active{% endif %}">
+      <i class="fa-solid fa-box"></i>
+      <span>Orders</span>
+    </a>
+  </div>
+
+  <!-- JS Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- SweetAlert2 -->
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </body>
 
