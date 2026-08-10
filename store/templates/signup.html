@@ -14,34 +14,49 @@
 
             {% csrf_token %}
 
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endif %}
+
+            <!-- First Name -->
             <div class="form-group">
                 <label for="">First Name</label>
                 <input type="text"
                        name="firstname"
+                       value="{{values.first_name}}"
                        class="form-control form-control-sm">
             </div>
 
+            <!-- Last Name -->
             <div class="form-group">
                 <label for="">Last Name</label>
                 <input type="text"
                        name="lastname"
+                       value="{{values.last_name}}"
                        class="form-control form-control-sm">
             </div>
 
+            <!-- Phone -->
             <div class="form-group">
                 <label for="">Phone</label>
                 <input type="text"
                        name="phone"
+                       value="{{values.phone}}"
                        class="form-control form-control-sm">
             </div>
 
+            <!-- Email -->
             <div class="form-group">
                 <label for="">Email</label>
                 <input type="email"
                        name="email"
+                       value="{{values.email}}"
                        class="form-control form-control-sm">
             </div>
 
+            <!-- Password -->
             <div class="form-group">
                 <label for="">Password</label>
                 <input type="password"
