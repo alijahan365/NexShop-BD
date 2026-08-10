@@ -303,6 +303,91 @@
           {% endfor %}
         </div>
       </div>
+      
+      <!-- 1. Hero Carousel Slider -->
+      <div id="nexHeroCarousel" class="carousel slide hero-banner-card" data-ride="carousel" data-interval="4000">
+        <ol class="carousel-indicators">
+          <li data-target="#nexHeroCarousel" data-slide-to="0" class="active"></li>
+          <li data-target="#nexHeroCarousel" data-slide-to="1"></li>
+          <li data-target="#nexHeroCarousel" data-slide-to="2"></li>
+        </ol>
+        
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <div class="p-5 text-white d-flex flex-column justify-content-center" style="background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); min-height: 320px; border-radius: 16px;">
+              <span class="badge badge-success font-weight-bold px-3 py-2 mb-2 align-self-start" style="font-size: 0.85rem;">✨ EXCLUSIVE SUMMER COLLECTION 2026</span>
+              <h1 class="font-weight-bold display-4">Discover Next-Gen Shopping</h1>
+              <p class="lead">Premium Quality Products with Location-Based Delivery across Bangladesh!</p>
+              <div>
+                <a href="#catalog_section" class="btn btn-success btn-lg font-weight-bold px-4 shadow"><i class="fa-solid fa-store mr-2"></i> Explore Catalog</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="p-5 text-white d-flex flex-column justify-content-center" style="background: linear-gradient(135deg, #059669 0%, #047857 100%); min-height: 320px; border-radius: 16px;">
+              <span class="badge badge-light text-success font-weight-bold px-3 py-2 mb-2 align-self-start" style="font-size: 0.85rem;">🎧 TECH & GADGETS SHOWCASE</span>
+              <h1 class="font-weight-bold display-4">Wireless Audio & Smartwatches</h1>
+              <p class="lead">Top rated earbuds, smart accessories, and electronics with warranty.</p>
+              <div>
+                <a href="#catalog_section" class="btn btn-light btn-lg text-success font-weight-bold px-4 shadow"><i class="fa-solid fa-bolt mr-2"></i> Shop Gadgets</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="carousel-item">
+            <div class="p-5 text-white d-flex flex-column justify-content-center" style="background: linear-gradient(135deg, #6366f1 0%, #4f46e5 100%); min-height: 320px; border-radius: 16px;">
+              <span class="badge badge-warning font-weight-bold px-3 py-2 mb-2 align-self-start text-dark" style="font-size: 0.85rem;">👔 MODERN FASHION DEALS</span>
+              <h1 class="font-weight-bold display-4">Trendy Apparel & Accessories</h1>
+              <p class="lead">Hand-picked designer outfits, leather footwear, and luxury timepieces.</p>
+              <div>
+                <a href="#catalog_section" class="btn btn-warning btn-lg text-dark font-weight-bold px-4 shadow"><i class="fa-solid fa-shirt mr-2"></i> View Fashion</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <a class="carousel-control-prev" href="#nexHeroCarousel" role="button" data-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        </a>
+        <a class="carousel-control-next" href="#nexHeroCarousel" role="button" data-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <!-- 2. Products Section -->
+      <div id="catalog_section">
+        
+        <div class="d-flex flex-wrap justify-content-between align-items-center mb-3">
+          <div>
+            <h4 class="font-weight-bold text-dark m-0"><i class="fa-solid fa-store text-success mr-2"></i> Product Catalog</h4>
+            <small class="text-muted">Click any product to view details, size & options</small>
+          </div>
+          <span class="badge badge-light border px-3 py-2 font-weight-bold mt-2 mt-sm-0" style="font-size: 0.9rem;">{{products|length}} Products Listed</span>
+        </div>
+
+        {% if request.GET.query %}
+        <div class="alert alert-success d-flex justify-content-between align-items-center mb-3 border" style="border-radius: 12px; background: #ecfdf5;">
+          <div>
+            <i class="fa-solid fa-magnifying-glass text-success mr-2"></i> Search results for: <strong>"{{request.GET.query}}"</strong> ({{products|length}} items found)
+          </div>
+          <a href="/" class="btn btn-sm btn-outline-danger font-weight-bold">Clear Search &times;</a>
+        </div>
+        {% endif %}
+
+        <!-- Interactive Category Filter Pills -->
+        <div class="mb-4">
+          <a href="/" class="category-pill-btn {% if not request.GET.category %}active{% endif %}">
+            <i class="fa-solid fa-layer-group mr-1"></i> All Products
+          </a>
+          {% for category in categories %}
+          <a href="/?category={{category.id}}" class="category-pill-btn {% if request.GET.category == category.id|stringformat:'i' %}active{% endif %}">
+            {{category.name}}
+          </a>
+          {% endfor %}
+        </div>
+
+      </div>
 
     </div>
 
