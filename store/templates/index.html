@@ -237,10 +237,77 @@
 </style>
 
 <div class="container-fluid px-lg-5">
-  <div class="py-5 text-center">
-    <h2 class="font-weight-bold text-dark">Welcome to NexShop E-Commerce Platform</h2>
-    <p class="text-muted">Loading homepage product showcase...</p>
+  
+  <div class="row main-layout-wrapper">
+    
+    <!-- LEFT COLUMN: Category Catalog Sidebar -->
+    <div class="col-lg-3 d-none d-lg-block mb-4">
+      <div class="category-panel">
+        <div class="category-panel-header">
+          <i class="fa-solid fa-list-ul mr-2 text-success"></i> Category Catalog
+        </div>
+        <div class="list-group list-group-flush">
+          <a href="/" class="category-item {% if not request.GET.category %}active{% endif %}">
+            <span><i class="fa-solid fa-layer-group mr-2 text-success"></i> All Products</span>
+            <i class="fa-solid fa-chevron-right text-muted" style="font-size: 0.75rem;"></i>
+          </a>
+          {% for category in categories %}
+          <a href="/?category={{category.id}}" class="category-item {% if request.GET.category == category.id|stringformat:'i' %}active{% endif %}">
+            <span>
+              {% if 'Electronics' in category.name %}<i class="fa-solid fa-laptop mr-2 text-primary"></i>
+              {% elif 'Men' in category.name %}<i class="fa-solid fa-shirt mr-2 text-success"></i>
+              {% elif 'Women' in category.name %}<i class="fa-solid fa-vest-patches mr-2 text-danger"></i>
+              {% elif 'Watch' in category.name %}<i class="fa-solid fa-clock mr-2 text-warning"></i>
+              {% elif 'Shoe' in category.name %}<i class="fa-solid fa-shoe-prints mr-2 text-info"></i>
+              {% elif 'Home' in category.name %}<i class="fa-solid fa-house-laptop mr-2 text-secondary"></i>
+              {% elif 'Health' in category.name %}<i class="fa-solid fa-spa mr-2 text-danger"></i>
+              {% else %}<i class="fa-solid fa-book mr-2 text-dark"></i>
+              {% endif %}
+              {{category.name}}
+            </span>
+            <i class="fa-solid fa-chevron-right text-muted" style="font-size: 0.75rem;"></i>
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div class="col-lg-9">
+
+      <!-- MOBILE CATEGORIES TOP HORIZONTAL SCROLL BAR -->
+      <div class="d-block d-lg-none mb-3">
+        <div class="d-flex align-items-center justify-content-between mb-2">
+          <h6 class="font-weight-bold text-dark m-0"><i class="fa-solid fa-list-ul text-success mr-2"></i> Select Category</h6>
+          <button class="btn btn-sm btn-outline-success font-weight-bold py-1 px-3" data-toggle="modal" data-target="#mobileCategoryModal">
+            <i class="fa-solid fa-border-all mr-1"></i> All Categories &rarr;
+          </button>
+        </div>
+        <div class="mobile-category-bar">
+          <a href="/" class="mobile-cat-pill {% if not request.GET.category %}active{% endif %}">
+            <i class="fa-solid fa-layer-group text-success"></i> All Products
+          </a>
+          {% for category in categories %}
+          <a href="/?category={{category.id}}" class="mobile-cat-pill {% if request.GET.category == category.id|stringformat:'i' %}active{% endif %}">
+            {% if 'Electronics' in category.name %}<i class="fa-solid fa-laptop text-primary"></i>
+            {% elif 'Men' in category.name %}<i class="fa-solid fa-shirt text-success"></i>
+            {% elif 'Women' in category.name %}<i class="fa-solid fa-vest-patches text-danger"></i>
+            {% elif 'Watch' in category.name %}<i class="fa-solid fa-clock text-warning"></i>
+            {% elif 'Shoe' in category.name %}<i class="fa-solid fa-shoe-prints text-info"></i>
+            {% elif 'Home' in category.name %}<i class="fa-solid fa-house-laptop text-secondary"></i>
+            {% elif 'Health' in category.name %}<i class="fa-solid fa-spa text-danger"></i>
+            {% else %}<i class="fa-solid fa-tag text-dark"></i>
+            {% endif %}
+            {{category.name}}
+          </a>
+          {% endfor %}
+        </div>
+      </div>
+
+    </div>
+
   </div>
+
 </div>
 
 {% endblock %}
