@@ -72,4 +72,13 @@ class Signup(View):
         elif len(customer.password) < 5:
             error_message = "Password must be 5 characters long"
 
+        elif not customer.email:
+            error_message = "Please Enter your Email"
+
+        elif len(customer.email) < 5:
+            error_message = "Email must be 5 characters long"
+
+        elif customer.isExists():
+            error_message = "Email Address Already Registered.."
+
         return error_message
