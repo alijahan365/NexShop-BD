@@ -6,7 +6,21 @@
 
     <div class="col-lg-5 rounded mx-auto border pt-4">
 
-        <h3 class="alert alert-light rounded-pill" style="text-align:center">
+        <!-- Login Image -->
+        <div class="text-center col">
+
+            <img
+                src="https://skillindiacsc.in/wp-content/uploads/2022/12/Skill-India-Online-Shopping.png"
+                alt="Online Shopping"
+                style="height: 150px;">
+
+            <hr>
+
+        </div>
+
+        <!-- Login Title -->
+        <h3 class="alert alert-light rounded-pill"
+            style="text-align:center">
             Login
         </h3>
 
@@ -14,6 +28,7 @@
 
             {% csrf_token %}
 
+            <!-- Error Message -->
             {% if error %}
             <div class="alert alert-danger" role="alert">
                 {{error}}
@@ -39,8 +54,25 @@
                 <input required
                        type="password"
                        name="password"
-                       class="form-control form-control-sm">
+                       class="form-control form-control-sm"
+                       placeholder="Enter your password">
             </div>
+
+            <!-- Remember Me -->
+            <div class="mb-3 form-check">
+
+                <input type="checkbox"
+                       class="form-check-input"
+                       id="exampleCheck1">
+
+                <label class="form-check-label"
+                       for="exampleCheck1">
+                    Remember me
+                </label>
+
+            </div>
+
+            <hr>
 
             <button type="submit"
                     class="btn btn-sm btn-success col-lg-12">
