@@ -60,4 +60,16 @@ class Signup(View):
         elif len(customer.last_name) < 3:
             error_message = "Last Name must be 3 characters long or more"
 
+        elif not customer.phone:
+            error_message = "Enter your Phone Number"
+
+        elif len(customer.phone) < 10:
+            error_message = "Phone Number must be 10 characters long"
+
+        elif not customer.password:
+            error_message = "Please Enter your Password"
+
+        elif len(customer.password) < 5:
+            error_message = "Password must be 5 characters long"
+
         return error_message
