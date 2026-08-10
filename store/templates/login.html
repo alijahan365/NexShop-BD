@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="p-3 m-3">
+
+    <div class="col-lg-5 rounded mx-auto border pt-4">
+
+        <h3 class="alert alert-light rounded-pill" style="text-align:center">
+            Login
+        </h3>
+
+        <form action="/login" method="POST">
+
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="">Email</label>
+                <input required
+                       type="email"
+                       name="email"
+                       class="form-control form-control-sm"
+                       placeholder="abc@gmail.com">
+            </div>
+
+            <div class="form-group">
+                <label for="">Password</label>
+                <input required
+                       type="password"
+                       name="password"
+                       class="form-control form-control-sm">
+            </div>
+
+            <button type="submit"
+                    class="btn btn-sm btn-success col-lg-12">
+                Login
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
