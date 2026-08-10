@@ -17,6 +17,13 @@ class Signup(View):
         email = postData.get('email')
         password = postData.get('password')
 
+        value = {
+            'first_name': first_name,
+            'last_name': last_name,
+            'phone': phone,
+            'email': email
+        }
+
         customer = Customer(
             first_name=first_name,
             last_name=last_name,
@@ -25,6 +32,15 @@ class Signup(View):
             password=password
         )
 
-        customer.register()
+        error_message = None
 
-        return redirect('homepage')
+        if not error_message:
+            customer.register()
+            return redirect('homepage')
+
+        data = {
+            'error': error_message,
+            'values': value
+        }
+
+        return render(request, 'signup.html', data)
