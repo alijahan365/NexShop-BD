@@ -14,17 +14,28 @@
 
             {% csrf_token %}
 
+            {% if error %}
+            <div class="alert alert-danger" role="alert">
+                {{error}}
+            </div>
+            {% endif %}
+
+            <!-- Email -->
             <div class="form-group">
                 <label for="">Email</label>
+
                 <input required
                        type="email"
                        name="email"
+                       value="{{values.email}}"
                        class="form-control form-control-sm"
                        placeholder="abc@gmail.com">
             </div>
 
+            <!-- Password -->
             <div class="form-group">
                 <label for="">Password</label>
+
                 <input required
                        type="password"
                        name="password"
