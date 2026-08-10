@@ -13,16 +13,32 @@ class Login(View):
         email = request.POST.get('email')
         password = request.POST.get('password')
 
-        customer = Customer.get_customer_by_email(email)
+        error_message = None
 
-        if customer:
-            flag = check_password(password, customer.password)
+        if not email:
+            error_message = 'Please enter your email'
 
-            if flag:
-                return redirect('homepage')
+        elif not password:
+            error_message = 'Please enter your password'
+
+        else:
+            customer = Customer.get_customer_by_email(email)
+
+            if customer:
+                flag = check_password(password, customer.password)
+
+                if flag:
+                    return redirect('homepage')
+                else:
+                    error_message = 'Invalid email or password'
+            else:
+                error_message = 'Invalid email or password'
 
         return render(request, 'login.html', {
-            'error': 'Invalid email or password'
+            'error': error_message,
+            'values': {
+                'email': email
+            }
         })
 
 
