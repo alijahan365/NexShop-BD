@@ -28,9 +28,13 @@ class Login(View):
                 flag = check_password(password, customer.password)
 
                 if flag:
+                    request.session['customer'] = customer.id
+
                     return redirect('homepage')
+
                 else:
                     error_message = 'Invalid email or password'
+
             else:
                 error_message = 'Invalid email or password'
 
