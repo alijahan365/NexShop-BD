@@ -120,15 +120,15 @@ erDiagram
 ## 📸 System Interface & UI Showcase
 
 ### 1. Client Storefront Catalog
-![Client Storefront Catalog](.github/assets/storefront.png)
+![Client Storefront Catalog](docs/assets/storefront.png)
 > *Interactive hero banners, dynamic category navigation sidebar, product grid with BDT pricing, and instant cart control system.*
 
 ### 2. Administrative Control Center Overview
-![Administrative Control Center Overview](.github/assets/admin_overview.png)
+![Administrative Control Center Overview](docs/assets/admin_overview.png)
 > *Customized Django administrative overview for managing products, categories, customers, and order states.*
 
 ### 3. Payment Verification & Order Dispatch Workflow
-![Payment Verification & Order Dispatch Workflow](.github/assets/order_verification.png)
+![Payment Verification & Order Dispatch Workflow](docs/assets/order_verification.png)
 > *One-click badge action controls allowing administrators to verify mobile payments (bKash/Nagad/Rocket) and track delivery dispatches.*
 
 ---
