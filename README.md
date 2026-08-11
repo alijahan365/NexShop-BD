@@ -123,9 +123,13 @@ erDiagram
 ![Client Storefront Catalog](.github/assets/storefront.png)
 > *Interactive hero banners, dynamic category navigation sidebar, product grid with BDT pricing, and instant cart control system.*
 
-### 2. Administrative Payment Verification & Order Dispatch Workflow
-![Admin Payment Verification Workflow](.github/assets/order_verification.png)
-> *Custom Django administrative control center featuring one-click mobile payment verification (bKash/Nagad/Rocket badges) and real-time delivery dispatch status management.*
+### 2. Administrative Control Center Overview
+![Administrative Control Center Overview](.github/assets/admin_overview.png)
+> *Customized Django administrative overview for managing products, categories, customers, and order states.*
+
+### 3. Payment Verification & Order Dispatch Workflow
+![Payment Verification & Order Dispatch Workflow](.github/assets/order_verification.png)
+> *One-click badge action controls allowing administrators to verify mobile payments (bKash/Nagad/Rocket) and track delivery dispatches.*
 
 ---
 
